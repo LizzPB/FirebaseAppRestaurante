@@ -12,7 +12,9 @@
   // body... 
   // Get a reference to the database service
   const databaseRef = firebase.database().ref('comments');
-  //GET ELEMENTS FORM
+  //Get elements by ID
+  const nameInput = document.getElementById("name");
+  const commentsInput = document.getElementById("comment");
   const btnSignUp = document.getElementById("btnLogin");
   const btnSignOut = document.getElementById("btnLogout");
   const form = document.querySelector("form");
@@ -23,18 +25,21 @@
     provider.addScope("email");
     firebase.auth().signInWithPopup(provider).then((result) =>{
       // The firebase.User instance:
-      var user = result.user;
-      // The Facebook firebase.auth.AuthCredential containing the Facebook
-      // access token:
+      var user = result.user.displayName;
+      var email = result.user.email;
+      var photo = result.user.photoURL;
+      // The Google credential, this contain the Google access token:
       var credential = result.credential;
-        console.log(`${result.user.email} ha iniciado sesion`)
-        console.log(`${result.user.displayName} ha iniciado sesion`)
-        firebase.database().ref('users/' + result.user.displayName).update({
-          username: result.user.displayName,
-          email: result.user.email,
-          foto: result.user.photoURL
-        })
+      console.log(`${result.user.email} ha iniciado sesion`);
+      console.log(`${result.user.displayName} ha iniciado sesion`);
+      firebase.database().ref('users/' + user).update({
+        username: user,
+        email: email,
+        foto: photo
       })
+      nameInput.value=user;
+      nameInput.setAttribute("disabled", "disabled")
+    })
       .catch(error => console.error(`Error : ${error.code}: ${error.message}`))
   })
 
@@ -52,11 +57,6 @@
 
   form.addEventListener("submit", postComment);
 
-  function login() {
-
-    // body...
-  }
-  
   //Anonimus function timeStamp, par aagregar fecha y hora al comentario
   const timeStamp = () => {
   let options = {
