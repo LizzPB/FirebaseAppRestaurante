@@ -1,0 +1,31 @@
+{
+  "name": "firebaseapprestaurante",
+  "version": "1.0.0",
+  "description": "pagina de un restaurante integrada con firebase",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haidee09/FirebaseAppRestaurante.git"
+  },
+  "keywords": [
+    "firebase",
+    "chat",
+    "post",
+    "firebase",
+    "database",
+    "rela",
+    "time"
+  ],
+  "author": "HaideeOnofre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haidee09/FirebaseAppRestaurante/issues"
+  },
+  "homepage": "https://github.com/haidee09/FirebaseAppRestaurante#readme",
+  "devDependencies": {
+    "express": "^4.15.2"
+  }
+}

@@ -13,7 +13,8 @@
   // Get a reference to the database service
   const databaseRef = firebase.database().ref('comments');
   //GET ELEMENTS FORM
-  const btnSignUp= document.getElementById("btnLogin");
+  const btnSignUp = document.getElementById("btnLogin");
+  const btnSignOut = document.getElementById("btnLogout");
   const form = document.querySelector("form");
   //EVENTS
   btnSignUp.addEventListener('click', e =>{    
@@ -35,6 +36,18 @@
         })
       })
       .catch(error => console.error(`Error : ${error.code}: ${error.message}`))
+  })
+
+  btnSignOut.addEventListener('click', e =>{   
+    firebase.auth().signOut()
+      .then(() =>{
+      console.log('te has deslogeado')
+      location.reload();
+    })
+      .catch(error => console.error(`Error : ${error.code}: ${error.message}`))
+  })
+
+  firebase.auth().onAuthStateChanged(user => {
   })
 
   form.addEventListener("submit", postComment);
