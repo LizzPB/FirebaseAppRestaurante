@@ -18,6 +18,7 @@
   const btnSignUp = document.getElementById("btnLogin");
   const btnSignOut = document.getElementById("btnLogout");
   const form = document.querySelector("form");
+
   //EVENTS
   btnSignUp.addEventListener('click', e =>{    
     const provider = new firebase.auth.GoogleAuthProvider();
